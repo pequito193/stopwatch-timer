@@ -1,6 +1,7 @@
 const stopwatch = () => {
+    const display = document.querySelector('.display');
     let running = false;
-    let startTime = 0;
+    let startTime = display.textContent;
     let endTime = 0;
 
 
@@ -20,10 +21,9 @@ const stopwatch = () => {
 
     // Updates the display every 0.05 seconds
     function updateDisplay() {
-        if (running = true) {
+        if (running === true) {
             setInterval(() => {
                 let currentTime = new Date();
-                const display = document.querySelector('.display')
                 let displayNumber = (currentTime - startTime) / 1000;
                 display.textContent = (Math.round(displayNumber * 100) / 100).toFixed(2);
             }, 43);
@@ -33,7 +33,7 @@ const stopwatch = () => {
 
     // Starts the timer
     const start = () => {
-        if(running = false) {
+        if(running === true) {
             throw new Error('Stopwatch already running!');
         } else {
             running = true;
@@ -46,7 +46,7 @@ const stopwatch = () => {
     // Stops the timer
     const stop = () => {
         let currentTime = new Date();
-        if (running = true) {
+        if (running === true) {
         endTime = (currentTime - startTime) / 1000;
         running = false;
         } else {
