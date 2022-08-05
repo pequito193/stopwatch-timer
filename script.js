@@ -1,8 +1,8 @@
 const stopwatch = () => {
     const display = document.querySelector('.display');
     let running = false;
-    let startTime = 0;
-    let endTime = 0;
+    let startTime;
+    let endTime;
     let interval;
 
 
