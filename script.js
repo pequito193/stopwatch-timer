@@ -1,34 +1,73 @@
 const stopwatch = () => {
+    let running = false;
+    let startTime = 0;
+    let endTime = 0;
+    let duration = 0;
 
+
+    // Resets the screen display
+    function resetDisplay() {
+        const display = document.querySelector('.display')
+        display.textContent = '0.00';
+    }
+
+
+    // Resets the timer
     function resetTime() {
-        start.startingPoint = new Date();
+        startTime = new Date();
+        resetDisplay();
     }
 
+
+    // Updates the display every 0.05 seconds
+    function updateDisplay() {
+        setInterval(() => {
+            let currentTime = new Date();
+            const display = document.querySelector('.display')
+            display.textContent = (currentTime - startTime) / 1000;
+        }, 50);
+    }
+
+
+    // Starts the timer
     const start = () => {
-        let startingPoint = new Date();
-        console.log(startingPoint);
-    }
-
-    const stop = () => {
-        console.log(start.startingPoint)
-        let currentTime = new Date();
-        if (currentTime - start.startingPoint > 0) {
-        const finishTime = (new Date() - start.startingPoint) / 1000;
-        console.log(finishTime);
-        resetTime();
+        if(running = false) {
+            throw new Error('Stopwatch already running!');
         } else {
-            alert('TIMER HASNT BEEN STARTED')
+            running = true;
+            startTime = new Date();
+            updateDisplay();
         }
     }
 
-    return {start, stop};
+
+    // Stops the timer
+    const stop = () => {
+        if (running = true) {
+        endTime = (new Date() - start.startingPoint) / 1000;
+        running = false;
+        } else {
+            throw new Error("Timer hasn't been started!");
+        }
+    }
+
+
+    // Resets the clock
+    const reset = () => {
+        resetTime();
+    }
+
+    return {start, stop, reset};
 }
 
 const sw = stopwatch();
 console.log(sw)
 
 const start = document.querySelector('.start')
-start.addEventListener('click', sw.start) 
+start.addEventListener('click', sw.start)
+
+const reset = document.querySelector('.reset')
+reset.addEventListener('click', sw.reset)
 
 const stop = document.querySelector('.stop')
 stop.addEventListener('click', sw.stop)
