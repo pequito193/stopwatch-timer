@@ -3,6 +3,7 @@ const stopwatch = () => {
     let running = false;
     let startTime = 0;
     let endTime = 0;
+    let interval;
 
 
     // Resets the screen display
@@ -21,9 +22,8 @@ const stopwatch = () => {
 
     // Updates the display every 0.05 seconds
     function updateDisplay() {
-        console.log(running)
         if (running === true) {
-            setInterval(() => {
+            interval = setInterval(() => {
                 let currentTime = new Date();
                 let displayNumber = (currentTime - startTime) / 1000;
                 display.textContent = (Math.round(displayNumber * 100) / 100).toFixed(2);
@@ -51,8 +51,8 @@ const stopwatch = () => {
         let currentTime = new Date();
         if (running === true) {
             endTime = (currentTime - startTime) / 1000;
+            clearInterval(interval);
             running = false;
-            updateDisplay();
         } else {
             throw new Error("Timer hasn't been started!");
         }
