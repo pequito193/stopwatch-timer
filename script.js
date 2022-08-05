@@ -8,7 +8,6 @@ const stopwatch = () => {
 
     // Resets the screen display
     function resetDisplay() {
-        const display = document.querySelector('.display')
         display.textContent = '0.00';
     }
 
