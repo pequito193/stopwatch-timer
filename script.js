@@ -1,7 +1,7 @@
 const stopwatch = () => {
     const display = document.querySelector('.display');
     let running = false;
-    let startTime = display.textContent;
+    let startTime = 0;
     let endTime = 0;
 
 
