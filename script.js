@@ -21,12 +21,15 @@ const stopwatch = () => {
 
     // Updates the display every 0.05 seconds
     function updateDisplay() {
+        console.log(running)
         if (running === true) {
             setInterval(() => {
                 let currentTime = new Date();
                 let displayNumber = (currentTime - startTime) / 1000;
                 display.textContent = (Math.round(displayNumber * 100) / 100).toFixed(2);
             }, 43);
+        } else {
+            display.textContent = (Math.round(endTime * 100) / 100).toFixed(2);
         }
     }
 
@@ -47,8 +50,9 @@ const stopwatch = () => {
     const stop = () => {
         let currentTime = new Date();
         if (running === true) {
-        endTime = (currentTime - startTime) / 1000;
-        running = false;
+            endTime = (currentTime - startTime) / 1000;
+            running = false;
+            updateDisplay();
         } else {
             throw new Error("Timer hasn't been started!");
         }
