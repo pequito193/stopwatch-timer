@@ -21,6 +21,8 @@ const stopwatch = () => {
 
     // Updates the display every 0.05 seconds
     function updateDisplay() {
+        let previousTime = Number(display.textContent) * 1000
+        startTime = Number(new Date()) - previousTime;
         if (running === true) {
             interval = setInterval(() => {
                 let currentTime = new Date();
@@ -39,7 +41,6 @@ const stopwatch = () => {
             throw new Error('Stopwatch already running!');
         } else {
             running = true;
-            startTime = new Date();
             updateDisplay();
         }
     }
