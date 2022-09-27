@@ -17,9 +17,9 @@ const stopwatch = () => {
         startTime = new Date();
         resetDisplay();
     }
+    
 
-
-    // Updates the display every 0.05 seconds
+    // Updates the display every
     function updateDisplay() {
         let previousTime = Number(display.textContent) * 1000
         startTime = Number(new Date()) - previousTime;
