@@ -17,7 +17,7 @@ const stopwatch = () => {
         startTime = new Date();
         resetDisplay();
     }
-    
+
 
     // Updates the display every
     function updateDisplay() {
@@ -68,7 +68,6 @@ const stopwatch = () => {
 }
 
 const sw = stopwatch();
-console.log(sw)
 
 const start = document.querySelector('.start')
 start.addEventListener('click', sw.start)
